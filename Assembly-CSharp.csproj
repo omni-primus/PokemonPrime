@@ -53,7 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Map\Regions.cs" />
+     <Compile Include="Assets\Scripts\Map\TallGrass.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\BasePokemon.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/doa2w/Pokemon Prime/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
