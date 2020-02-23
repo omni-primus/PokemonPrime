@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     public List<BasePokemon> allPokemon = new List<BasePokemon>();
     public List<PokemonMoves> allMoves = new List<PokemonMoves>();
 
+    public Transform defencePodium;
+    public Transform attackPodium;
+
+    public GameObject emptyPoke;
+
     void Start()
     {
         playerCamera.SetActive(true);
@@ -33,7 +38,18 @@ public class GameManager : MonoBehaviour
 
         BasePokemon battlePokemon = GetRandomPokemonFromList(GetPokemonByRarity(rarity));
 
+        Debug.Log(battlePokemon.name);
+
         player.GetComponent<PlayerMovement>().isAllowedToMove = false;
+
+        GameObject dPoke = Instantiate(emptyPoke, defencePodium.transform.position, Quaternion.identity) as GameObject;
+
+        dPoke.transform.parent = defencePodium;
+
+        BasePokemon tempPoke = dPoke.AddComponent<BasePokemon>() as BasePokemon;
+        tempPoke.AddMember(battlePokemon);
+
+        dPoke.GetComponent<SpriteRenderer>().sprite = battlePokemon.image;
     }
 
     public List<BasePokemon> GetPokemonByRarity(Rarity rarity)
@@ -41,7 +57,7 @@ public class GameManager : MonoBehaviour
         List<BasePokemon> returnPokemon = new List<BasePokemon>();
         foreach(BasePokemon Pokemon in allPokemon)
         {
-            if(Pokemon.rarity == rarity)
+            if (Pokemon.rarity == rarity)
                 returnPokemon.Add(Pokemon);
         }
 

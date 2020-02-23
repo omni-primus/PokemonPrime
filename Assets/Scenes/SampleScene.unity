@@ -526,6 +526,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b9513ac22abd604988a38db3c1794b7, type: 3}
+--- !u!1 &133951356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133951357}
+  m_Layer: 0
+  m_Name: defencePodium
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133951357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133951356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.65, y: -50.56, z: 4.6600704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 169
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &155874817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3939,6 +3969,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!1 &1051264562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051264563}
+  m_Layer: 0
+  m_Name: attackPodium
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1051264563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051264562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.93, y: -53.79, z: 4.6600704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 170
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1057227767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6193,8 +6253,17 @@ MonoBehaviour:
   playerCamera: {fileID: 519420028}
   battleCamera: {fileID: 1373171845}
   player: {fileID: 1051064129}
-  allPokemon: []
+  allPokemon:
+  - {fileID: 4242481906819964537, guid: 8679d38f6d4c6d8419eb89b762341b1f, type: 3}
+  - {fileID: 8480178396903525517, guid: 41d2e4d8928919045a9501786961aad8, type: 3}
+  - {fileID: 5597377649504432458, guid: 6c921feb4f6c9784fa0baed91a5b169d, type: 3}
+  - {fileID: 1994671693145722144, guid: 464011d42f859984ea9087c538659267, type: 3}
+  - {fileID: 2741967515878635612, guid: f1cce31bce82cd74982b16fc46917018, type: 3}
   allMoves: []
+  defencePodium: {fileID: 133951357}
+  attackPodium: {fileID: 1051264563}
+  emptyPoke: {fileID: 6699434418648205404, guid: f193bf8da284d524f80594f2ef76c569,
+    type: 3}
 --- !u!4 &1642636715
 Transform:
   m_ObjectHideFlags: 0

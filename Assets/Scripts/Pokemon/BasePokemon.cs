@@ -12,12 +12,14 @@ public class BasePokemon : MonoBehaviour
     public BiomeList biomeFound;
     public PokemonType type;
     public Rarity rarity;
-    public Stat hpStat;
+    public int HP;
+    private int maxHP;
     public Stat attStat;
     public Stat defStat;
     public Stat spAttStat;
     public Stat spDefStat;
-    public float Speed;
+
+    public PokemonStats pokemonStats;
 
     private int level;
     public bool canEvolve;
@@ -25,13 +27,32 @@ public class BasePokemon : MonoBehaviour
 
     void Start()
     {
-        
+        maxHP = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void AddMember (BasePokemon bp)
+    {
+        this.Name = bp.Name;
+        this.image = bp.image;
+        this.biomeFound = bp.biomeFound;
+        this.type = bp.type;
+        this.rarity = bp.rarity;
+        this.HP = bp.HP;
+        this.maxHP = bp.maxHP;
+        this.attStat = bp.attStat;
+        this.defStat = bp.defStat;
+        this.spAttStat = bp.spAttStat;
+        this.spDefStat = bp.spDefStat;
+        this.pokemonStats = bp.pokemonStats;
+        this.level = bp.level;
+        this.canEvolve = bp.canEvolve;
+        this.evolveTo = bp.evolveTo;
     }
 }
 
@@ -71,4 +92,15 @@ public class PokemonEvolution
     public BasePokemon nextEvolution;
     public int levelUpLevel;
 
+}
+
+[System.Serializable]
+public class PokemonStats
+{
+    public int AttStat;
+    public int DefStat;
+    public int SpAttStat;
+    public int SpDefStat;
+    public int SpeedStat;
+    public int EvasionStat;
 }
