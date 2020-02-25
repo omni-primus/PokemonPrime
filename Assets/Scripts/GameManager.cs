@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject emptyPoke;
 
+    public BattleManager bm;
+
     void Start()
     {
         playerCamera.SetActive(true);
@@ -38,11 +40,14 @@ public class GameManager : MonoBehaviour
 
         BasePokemon battlePokemon = GetRandomPokemonFromList(GetPokemonByRarity(rarity));
 
-        Debug.Log(battlePokemon.name);
-
         player.GetComponent<PlayerMovement>().isAllowedToMove = false;
 
         GameObject dPoke = Instantiate(emptyPoke, defencePodium.transform.position, Quaternion.identity) as GameObject;
+
+        Vector3 pokeLocalPos = new Vector3(0, 1, 0);
+
+        dPoke.transform.parent = defencePodium;
+        dPoke.transform.localPosition = pokeLocalPos;
 
         dPoke.transform.parent = defencePodium;
 
@@ -50,6 +55,17 @@ public class GameManager : MonoBehaviour
         tempPoke.AddMember(battlePokemon);
 
         dPoke.GetComponent<SpriteRenderer>().sprite = battlePokemon.image;
+
+        bm.ChangeMenu(BattleMenu.Selection);
+    }
+
+    public void LeaveBattle()
+    {
+        playerCamera.SetActive(true);
+        battleCamera.SetActive(false);
+
+        player.GetComponent<PlayerMovement>().isAllowedToMove = true;
+        bm.ChangeMenu(BattleMenu.Off);
     }
 
     public List<BasePokemon> GetPokemonByRarity(Rarity rarity)
