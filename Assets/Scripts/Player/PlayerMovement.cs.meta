@@ -3,7 +3,11 @@ guid: d24e694c789b78f48af14d43e7b37ffb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - northSprite: {instanceID: 0}
+  - eastSprite: {instanceID: 0}
+  - southSprite: {instanceID: 0}
+  - westSprite: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject battleCamera;
 
     public GameObject player;
+    public GameObject dPoke;
 
     public List<BasePokemon> allPokemon = new List<BasePokemon>();
     public List<PokemonMoves> allMoves = new List<PokemonMoves>();
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().isAllowedToMove = false;
 
-        GameObject dPoke = Instantiate(emptyPoke, defencePodium.transform.position, Quaternion.identity) as GameObject;
+        dPoke = Instantiate(emptyPoke, defencePodium.transform.position, Quaternion.identity) as GameObject;
 
         Vector3 pokeLocalPos = new Vector3(0, 1, 0);
 
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         dPoke.GetComponent<SpriteRenderer>().sprite = battlePokemon.image;
 
-        bm.ChangeMenu(BattleMenu.Selection);
+        bm.ChangeMenu(BattleMenu.Selection);        
     }
 
     public void LeaveBattle()
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         battleCamera.SetActive(false);
 
         player.GetComponent<PlayerMovement>().isAllowedToMove = true;
+        Destroy(dPoke);
         bm.ChangeMenu(BattleMenu.Off);
     }
 
