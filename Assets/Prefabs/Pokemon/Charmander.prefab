@@ -98,18 +98,17 @@ MonoBehaviour:
   type: 2
   rarity: 2
   HP: 39
+  currentHP: 0
   attStat:
-    minimum: 0
-    maximum: 0
+    currentStat: 0
   defStat:
-    minimum: 0
-    maximum: 0
+    currentStat: 0
   spAttStat:
-    minimum: 0
-    maximum: 0
+    currentStat: 0
   spDefStat:
-    minimum: 0
-    maximum: 0
+    currentStat: 0
+  speedStat:
+    currentStat: 0
   pokemonStats:
     AttStat: 52
     DefStat: 43
@@ -117,6 +116,7 @@ MonoBehaviour:
     SpDefStat: 50
     SpeedStat: 65
     EvasionStat: 0
+  level: 0
   canEvolve: 1
   evolveTo:
     nextEvolution: {fileID: 1994671693145722144, guid: 464011d42f859984ea9087c538659267,

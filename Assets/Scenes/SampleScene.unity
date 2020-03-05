@@ -3533,6 +3533,7 @@ RectTransform:
   - {fileID: 1675466772}
   - {fileID: 376949810}
   - {fileID: 1294618998}
+  - {fileID: 1693531700}
   m_Father: {fileID: 1494045938}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5147,6 +5148,7 @@ GameObject:
   - component: {fileID: 1051064132}
   - component: {fileID: 1051064134}
   - component: {fileID: 1051064133}
+  - component: {fileID: 1051064135}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5281,6 +5283,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &1051064135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051064129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ff596d39f2188459f578d074c6a33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownedPokemon:
+  - NickName: Chari
+    pokemon: {fileID: 5597377649504432458, guid: 6c921feb4f6c9784fa0baed91a5b169d,
+      type: 3}
+    level: 5
+    moves: []
 --- !u!1 &1051264562
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,7 +5581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -198.9, y: -213.8725}
+  m_AnchoredPosition: {x: -198.90002, y: -213.8725}
   m_SizeDelta: {x: -397.9, y: -427.745}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076053399
@@ -6985,6 +7005,10 @@ MonoBehaviour:
   InfoMenu: {fileID: 1910475429}
   InfoText: {fileID: 436670503}
   currentSelection: 0
+  enemyDetails: {fileID: 734008024}
+  ePokeName: {fileID: 1896036289}
+  ePokeLevel: {fileID: 484993577}
+  ePokeHP: {fileID: 1693531701}
 --- !u!1001 &1373954953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8466,16 +8490,20 @@ MonoBehaviour:
   battleCamera: {fileID: 1373171845}
   player: {fileID: 1051064129}
   dPoke: {fileID: 0}
+  aPoke: {fileID: 0}
   allPokemon:
   - {fileID: 4242481906819964537, guid: 8679d38f6d4c6d8419eb89b762341b1f, type: 3}
   - {fileID: 8480178396903525517, guid: 41d2e4d8928919045a9501786961aad8, type: 3}
   - {fileID: 5597377649504432458, guid: 6c921feb4f6c9784fa0baed91a5b169d, type: 3}
   - {fileID: 1994671693145722144, guid: 464011d42f859984ea9087c538659267, type: 3}
   - {fileID: 2741967515878635612, guid: f1cce31bce82cd74982b16fc46917018, type: 3}
+  Route1: []
   allMoves: []
   defencePodium: {fileID: 133951357}
   attackPodium: {fileID: 1051264563}
   emptyPoke: {fileID: 6699434418648205404, guid: f193bf8da284d524f80594f2ef76c569,
+    type: 3}
+  emptyfriendlyPoke: {fileID: 8182232475505284227, guid: cff8c9193f90ec7468575b6128e6511d,
     type: 3}
   bm: {fileID: 1373171849}
 --- !u!4 &1642636715
@@ -8707,6 +8735,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9be0ee2999a48a4da5379d90d365bfb, type: 3}
+--- !u!1 &1693531699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693531700}
+  - component: {fileID: 1693531702}
+  - component: {fileID: 1693531701}
+  m_Layer: 5
+  m_Name: HealthDisplay (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1693531700
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693531699}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 734008025}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 265.5, y: -86.729}
+  m_SizeDelta: {x: 120.2, y: 34}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1693531701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693531699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 100/100
+--- !u!222 &1693531702
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693531699}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1721260378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9857,8 +9962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.199997, y: -28}
-  m_SizeDelta: {x: 85.2, y: 34}
+  m_AnchoredPosition: {x: 139.41995, y: -28}
+  m_SizeDelta: {x: 239.64, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1896036289
 MonoBehaviour:
@@ -10649,7 +10754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -124.600006, y: -213.89749}
+  m_AnchoredPosition: {x: -124.599976, y: -213.89749}
   m_SizeDelta: {x: -249.2, y: -427.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2015143119

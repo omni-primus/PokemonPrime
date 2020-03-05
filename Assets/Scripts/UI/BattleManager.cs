@@ -42,6 +42,12 @@ public class BattleManager : MonoBehaviour
     [Header("Misc")]
     public int currentSelection;
 
+    [Header("Pokemon-Enemy")]
+    public GameObject enemyDetails;
+    public Text ePokeName;
+    public Text ePokeLevel;
+    public Text ePokeHP;
+
 
 
     void Start()
@@ -219,6 +225,12 @@ public class BattleManager : MonoBehaviour
                 InfoMenu.gameObject.SetActive(false);
                 break;
         }
+    }
+    public void UpdateEnemyPokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP)
+    {
+        ePokeName.text = PokemonName;
+        ePokeLevel.text = "Lv " + elevel;
+        ePokeHP.text = eHP + "/" + eMaxHP;
     }
 }
 

@@ -13,21 +13,22 @@ public class BasePokemon : MonoBehaviour
     public PokemonType type;
     public Rarity rarity;
     public int HP;
-    private int maxHP;
+    public int currentHP;
     public Stat attStat;
     public Stat defStat;
     public Stat spAttStat;
     public Stat spDefStat;
+    public Stat speedStat;
 
     public PokemonStats pokemonStats;
 
-    private int level;
+    public int level;
     public bool canEvolve;
     public PokemonEvolution evolveTo;
 
     void Start()
     {
-        maxHP = HP;
+        currentHP = HP;
     }
 
     // Update is called once per frame
@@ -44,11 +45,12 @@ public class BasePokemon : MonoBehaviour
         this.type = bp.type;
         this.rarity = bp.rarity;
         this.HP = bp.HP;
-        this.maxHP = bp.maxHP;
+        this.currentHP = bp.currentHP;
         this.attStat = bp.attStat;
         this.defStat = bp.defStat;
         this.spAttStat = bp.spAttStat;
         this.spDefStat = bp.spDefStat;
+        this.speedStat = bp.speedStat;
         this.pokemonStats = bp.pokemonStats;
         this.level = bp.level;
         this.canEvolve = bp.canEvolve;

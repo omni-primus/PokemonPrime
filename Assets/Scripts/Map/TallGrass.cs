@@ -27,11 +27,11 @@ public class TallGrass : MonoBehaviour
         {
             //P= x / 187.5
             //VC = 10, C= 8.5, semi-rare = 6.75, Rare = 3.33 VR = 1.24
-            float verycommon = 10 / 187.5f; //5.3333
-            float common = 8.5f / 187.5f; //4.5333
-            float semirare = 6.75f / 187.5f; //3.6
-            float rare = 3.33f / 187.5f; //1.776
-            float veryrare = 1.24f / 187.5f;  //0.661
+            float verycommon = 0.0533f; //5.33 - 2.71 = 2.62
+            float common = 0.027f; //2.7 - 1.51 = 1.19
+            float semirare = 0.015f; //1.5 - 0.81 = 0.69
+            float rare = 0.008f; //0.8 - 0.31 = 0.49
+            float veryrare = 0.003f;  //0.3
 
             float p = Random.Range(0.0f, 100.0f);
 
