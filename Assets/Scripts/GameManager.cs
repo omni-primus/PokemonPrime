@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject dPoke;
     public GameObject aPoke;
-    Player plyr;
+    public Player plyr;
 
     public List<BasePokemon> allPokemon = new List<BasePokemon>();
     public List<BasePokemon> Route1 = new List<BasePokemon>();
@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     {
         playerCamera.SetActive(true);
         battleCamera.SetActive(false);
-        plyr = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
         battleCamera.SetActive(true);
         //Get a Random Pokemon from the List
         BasePokemon battlePokemon = GetRandomPokemonFromList(GetPokemonByRarity(rarity));
-        //BasePokemon PlayerPokemon = GetOwnedPokemon();
+        OwnedPokemon PlayerPokemon = GetOwnedPokemon(plyr.ownedPokemon);
         //Stop Player from Moving
         player.GetComponent<PlayerMovement>().isAllowedToMove = false;
         //Initiate Pokemon
@@ -65,21 +64,28 @@ public class GameManager : MonoBehaviour
         aPoke.transform.parent = attackPodium;
         //copy BasePokemon so it gets individuell
         BasePokemon tempPoke = dPoke.AddComponent<BasePokemon>() as BasePokemon;
+        BasePokemon playerTempPoke = aPoke.AddComponent<BasePokemon>() as BasePokemon;
         tempPoke.AddMember(battlePokemon);
+        playerTempPoke.AddMember(PlayerPokemon.pokemon);
 
         //Random level
         int p = Random.Range(2, 5);
         tempPoke.level = p;
+        //PlayerPokemon Level
+        playerTempPoke.level = PlayerPokemon.level;
         //calculate HP
         tempPoke.HP = (((2 * tempPoke.HP) * p) / 100) + p + 10;
+        playerTempPoke.HP = (((2 * playerTempPoke.HP) * playerTempPoke.level) / 100) + playerTempPoke.level + 10;
         tempPoke.currentHP = tempPoke.HP;
+        playerTempPoke.currentHP = playerTempPoke.HP;
         //Test
-        Debug.Log(tempPoke.currentHP);
-        Debug.Log(tempPoke.HP);
+        Debug.Log(playerTempPoke.currentHP);
+        Debug.Log(playerTempPoke.HP);
 
         dPoke.GetComponent<SpriteRenderer>().sprite = battlePokemon.image;
+        aPoke.GetComponent<SpriteRenderer>().sprite = PlayerPokemon.pokemon.image;
         bm.ChangeMenu(BattleMenu.Selection);
-        bm.UpdateEnemyPokemonDetails(tempPoke.Name, tempPoke.level, tempPoke.currentHP, tempPoke.HP);
+        bm.UpdateEnemyPokemonDetails(tempPoke.Name, tempPoke.level, tempPoke.currentHP, tempPoke.HP, PlayerPokemon.NickName, playerTempPoke.level, playerTempPoke.currentHP, playerTempPoke.HP);
     }
 
     public void LeaveBattle()
@@ -89,6 +95,7 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().isAllowedToMove = true;
         Destroy(dPoke);
+        Destroy(aPoke);
         bm.ChangeMenu(BattleMenu.Off);
     }
 
@@ -100,7 +107,6 @@ public class GameManager : MonoBehaviour
             if (Pokemon.rarity == rarity)
                 returnPokemon.Add(Pokemon);
         }
-
         return returnPokemon;
     }
 
@@ -112,12 +118,12 @@ public class GameManager : MonoBehaviour
         return poke;
     }
 
-    //public BasePokemon GetOwnedPokemon(List<OwnedPokemon> ownedPokemons)
-    //{
-    //    BasePokemon PlayerPoke = new BasePokemon();
-    //    PlayerPoke = ownedPokemons[0];
-    //    return PlayerPoke;
-    //}
+    public OwnedPokemon GetOwnedPokemon(List<OwnedPokemon> ownedPokemons)
+    {
+        OwnedPokemon PlayerPoke = new OwnedPokemon();
+        PlayerPoke = ownedPokemons[0];
+        return PlayerPoke;
+    }
 }
 
 [System.Serializable]

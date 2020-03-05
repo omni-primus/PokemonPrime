@@ -48,6 +48,11 @@ public class BattleManager : MonoBehaviour
     public Text ePokeLevel;
     public Text ePokeHP;
 
+    [Header("Pokemon-Player")]
+    public GameObject PlayerDetails;
+    public Text pPokeName;
+    public Text pPokeLevel;
+    public Text pPokeHP;
 
 
     void Start()
@@ -226,11 +231,15 @@ public class BattleManager : MonoBehaviour
                 break;
         }
     }
-    public void UpdateEnemyPokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP)
+    public void UpdateEnemyPokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP, string PlayerPokemonName, int pLevel, int pHP, int pMaxHP)
     {
         ePokeName.text = PokemonName;
         ePokeLevel.text = "Lv " + elevel;
         ePokeHP.text = eHP + "/" + eMaxHP;
+
+        pPokeName.text = PlayerPokemonName;
+        pPokeLevel.text = "Lv " + pLevel;
+        pPokeHP.text = pHP + "/" + pMaxHP;
     }
 }
 

@@ -7009,6 +7009,10 @@ MonoBehaviour:
   ePokeName: {fileID: 1896036289}
   ePokeLevel: {fileID: 484993577}
   ePokeHP: {fileID: 1693531701}
+  PlayerDetails: {fileID: 1113019548}
+  pPokeName: {fileID: 1065388238}
+  pPokeLevel: {fileID: 750773940}
+  pPokeHP: {fileID: 1078801038}
 --- !u!1001 &1373954953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8491,6 +8495,7 @@ MonoBehaviour:
   player: {fileID: 1051064129}
   dPoke: {fileID: 0}
   aPoke: {fileID: 0}
+  plyr: {fileID: 1051064135}
   allPokemon:
   - {fileID: 4242481906819964537, guid: 8679d38f6d4c6d8419eb89b762341b1f, type: 3}
   - {fileID: 8480178396903525517, guid: 41d2e4d8928919045a9501786961aad8, type: 3}
