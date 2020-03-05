@@ -112,12 +112,12 @@ public class GameManager : MonoBehaviour
         return poke;
     }
 
-    public BasePokemon GetOwnedPokemon(List<OwnedPokemon> ownedPokemons)
-    {
-        BasePokemon PlayerPoke = new BasePokemon();
-        PlayerPoke = ownedPokemons[0];
-        return PlayerPoke;
-    }
+    //public BasePokemon GetOwnedPokemon(List<OwnedPokemon> ownedPokemons)
+    //{
+    //    BasePokemon PlayerPoke = new BasePokemon();
+    //    PlayerPoke = ownedPokemons[0];
+    //    return PlayerPoke;
+    //}
 }
 
 [System.Serializable]
