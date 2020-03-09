@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
 
 public class BattleManager : MonoBehaviour
 {
     public BattleMenu currentMenu;
     private GameManager gm;
 
-    [Header("Selecion")]
+    [Header("Selection")]
     public GameObject SelectionMenu;
     public GameObject SelectionInfo;
     public Text selectionInfoText;
@@ -47,12 +48,17 @@ public class BattleManager : MonoBehaviour
     public Text ePokeName;
     public Text ePokeLevel;
     public Text ePokeHP;
+    public Slider eHpSlider;
 
     [Header("Pokemon-Player")]
     public GameObject PlayerDetails;
     public Text pPokeName;
     public Text pPokeLevel;
     public Text pPokeHP;
+    public Slider pHpSlider;
+
+    [Header("BattleState")]
+    public BattleState state;
 
 
     void Start()
@@ -66,11 +72,23 @@ public class BattleManager : MonoBehaviour
         moveTHT = moveTH.text;
         movefT = moveF.text;
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        state = BattleState.None;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(state == BattleState.Start || state == BattleState.None || state == BattleState.Run)
+        {
+            enemyDetails.gameObject.SetActive(false);
+            PlayerDetails.gameObject.SetActive(false);
+        }
+        else
+        {
+            enemyDetails.gameObject.SetActive(true);
+            PlayerDetails.gameObject.SetActive(true);
+        }
+
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (currentSelection == 1 || currentSelection == 2)
@@ -102,6 +120,26 @@ public class BattleManager : MonoBehaviour
         }
         if (Input.GetKeyDown("return"))
         {
+            
+            //In case Run was Selected
+            if (currentMenu == BattleMenu.Info)
+            {
+                if (state == BattleState.Run)
+                {
+                    gm.LeaveBattle();
+                }
+            }
+
+            //return for Fight Menu
+            if (currentMenu == BattleMenu.Fight)
+            {
+                if (currentSelection == 1)
+                {
+                    //Attack(gm.playerTempPoke, gm.tempPoke, 4);
+                }
+            }
+
+            //return for Move Selection
             if (currentMenu == BattleMenu.Selection)
             {
                 if(currentSelection == 1)
@@ -110,12 +148,20 @@ public class BattleManager : MonoBehaviour
                 }
                 if (currentSelection == 4)
                 {
-                    gm.LeaveBattle();
+                    InfoText.text = "You ran from the battle!";
+                    ChangeMenu(BattleMenu.Info);
+                    state = BattleState.Run;
                 }
             }
-            if (currentMenu == BattleMenu.Fight)
+            //return for Info Text
+            if (currentMenu == BattleMenu.Info)
             {
-                Debug.Log("Test");
+                if (state == BattleState.Start)
+                {
+                    ChangeMenu(BattleMenu.Selection);
+                    state = BattleState.PlayerTurn;
+                    selectionInfoText.text = "Choose your move..";
+                }
             }
         }
         if (Input.GetKeyDown("x"))
@@ -228,18 +274,35 @@ public class BattleManager : MonoBehaviour
                 movesMenu.gameObject.SetActive(false);
                 movesDetails.gameObject.SetActive(false);
                 InfoMenu.gameObject.SetActive(false);
+                enemyDetails.gameObject.SetActive(false);
+                PlayerDetails.gameObject.SetActive(false);
                 break;
         }
     }
-    public void UpdateEnemyPokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP, string PlayerPokemonName, int pLevel, int pHP, int pMaxHP)
+    public void UpdatePokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP, string PlayerPokemonName, int pLevel, int pHP, int pMaxHP)
     {
-        ePokeName.text = PokemonName;
-        ePokeLevel.text = "Lv " + elevel;
-        ePokeHP.text = eHP + "/" + eMaxHP;
+        SetHUD(eMaxHP, eHP, PokemonName, elevel, ePokeName, ePokeLevel, ePokeHP, eHpSlider);
+        SetHP(eHP, eHpSlider);
 
-        pPokeName.text = PlayerPokemonName;
-        pPokeLevel.text = "Lv " + pLevel;
-        pPokeHP.text = pHP + "/" + pMaxHP;
+        SetHUD(pMaxHP, pHP, PlayerPokemonName, pLevel, pPokeName, pPokeLevel, pPokeHP, pHpSlider);
+        SetHP(pHP, pHpSlider);
+    }
+    public void SetHUD(int maxHP, int hp, string PName, int level, Text PokeName, Text PokeLevel, Text PokeHP, Slider slider)
+    {
+        PokeName.text = PName;
+        PokeLevel.text = "Lv " + level;
+        PokeHP.text = hp + "/" + maxHP;
+        slider.maxValue = maxHP;
+        slider.value = hp;
+    }
+
+    public void SetHP(int hp, Slider slider)
+    {
+        slider.value += hp;
+    }
+    public void Attack(BasePokemon Attacker, BasePokemon Defender, int Damage)
+    {
+        Defender.currentHP += -(Damage);
     }
 }
 
@@ -251,4 +314,15 @@ public enum BattleMenu
     Fight,
     Info,
     Off
+}
+
+public enum BattleState
+{
+    Start,
+    PlayerTurn,
+    EnemyTurn,
+    Won,
+    Lost,
+    Run,
+    None
 }

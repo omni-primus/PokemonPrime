@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
         //Camera into BattleMode
         playerCamera.SetActive(false);
         battleCamera.SetActive(true);
+
+        //change State
+        bm.state = BattleState.Start;
         //Get a Random Pokemon from the List
         BasePokemon battlePokemon = GetRandomPokemonFromList(GetPokemonByRarity(rarity));
         OwnedPokemon PlayerPokemon = GetOwnedPokemon(plyr.ownedPokemon);
@@ -78,14 +81,15 @@ public class GameManager : MonoBehaviour
         playerTempPoke.HP = (((2 * playerTempPoke.HP) * playerTempPoke.level) / 100) + playerTempPoke.level + 10;
         tempPoke.currentHP = tempPoke.HP;
         playerTempPoke.currentHP = playerTempPoke.HP;
-        //Test
-        Debug.Log(playerTempPoke.currentHP);
-        Debug.Log(playerTempPoke.HP);
-
+        
+        //Set Sprites
         dPoke.GetComponent<SpriteRenderer>().sprite = battlePokemon.image;
         aPoke.GetComponent<SpriteRenderer>().sprite = PlayerPokemon.pokemon.image;
-        bm.ChangeMenu(BattleMenu.Selection);
-        bm.UpdateEnemyPokemonDetails(tempPoke.Name, tempPoke.level, tempPoke.currentHP, tempPoke.HP, PlayerPokemon.NickName, playerTempPoke.level, playerTempPoke.currentHP, playerTempPoke.HP);
+        //User Interface Update
+        bm.InfoText.text = "A wild " + battlePokemon.Name + " appeared!";
+        bm.ChangeMenu(BattleMenu.Info);
+        //Update 
+        bm.UpdatePokemonDetails(tempPoke.Name, tempPoke.level, tempPoke.currentHP, tempPoke.HP, PlayerPokemon.NickName, playerTempPoke.level, playerTempPoke.currentHP, playerTempPoke.HP);
     }
 
     public void LeaveBattle()
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
         Destroy(dPoke);
         Destroy(aPoke);
         bm.ChangeMenu(BattleMenu.Off);
+        bm.state = BattleState.None;
     }
 
     public List<BasePokemon> GetPokemonByRarity(Rarity rarity)
