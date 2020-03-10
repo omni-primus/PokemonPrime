@@ -95,7 +95,8 @@ MonoBehaviour:
   Name: Charmeleon
   image: {fileID: 21300008, guid: 34f5dd298e9f8b84488b37c727776f31, type: 3}
   biomeFound: 0
-  type: 2
+  type1: 2
+  type2: 17
   rarity: 3
   HP: 58
   currentHP: 0

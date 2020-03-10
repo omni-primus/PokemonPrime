@@ -63,6 +63,8 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
         fightT = fight.text;
         bagT = bag.text;
         pokemonT = pokemon.text;
@@ -71,7 +73,6 @@ public class BattleManager : MonoBehaviour
         moveTT = moveT.text;
         moveTHT = moveTH.text;
         movefT = moveF.text;
-        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         state = BattleState.None;
     }
 
@@ -135,7 +136,8 @@ public class BattleManager : MonoBehaviour
             {
                 if (currentSelection == 1)
                 {
-                    //Attack(gm.playerTempPoke, gm.tempPoke, 4);
+                    StartCoroutine(PlayerTurn());
+                    StartCoroutine(EnemyTurn());
                 }
             }
 
@@ -239,6 +241,8 @@ public class BattleManager : MonoBehaviour
 
                 break;
         }
+        eHpSlider.value = gm.tempPoke.currentHP;
+        pHpSlider.value = gm.playerTempPoke.currentHP;
     }
 
     public void ChangeMenu(BattleMenu m)
@@ -279,6 +283,56 @@ public class BattleManager : MonoBehaviour
                 break;
         }
     }
+
+    public void GetMoves(OwnedPokemon ownedPokemon)
+    {
+        int moveCount = ownedPokemon.moves.Count;
+        if(moveCount == 1)
+        {
+            moveOT = ownedPokemon.moves[0].name;
+            moveO.text = moveOT;
+            moveTT = "---";
+            moveT.text = moveTT;
+            moveTHT = "---";
+            moveTH.text = moveTHT;
+            movefT = "---";
+            moveF.text = movefT;
+        }
+        if (moveCount == 2)
+        {
+            moveOT = ownedPokemon.moves[0].name;
+            moveO.text = moveOT;
+            moveTT = ownedPokemon.moves[1].name;
+            moveT.text = moveTT;
+            moveTHT = "---";
+            moveTH.text = moveTHT;
+            movefT = "---";
+            moveF.text = movefT;
+        }
+        if (moveCount == 3)
+        {
+            moveOT = ownedPokemon.moves[0].name;
+            moveO.text = moveOT;
+            moveTT = ownedPokemon.moves[1].name;
+            moveT.text = moveTT;
+            moveTHT = ownedPokemon.moves[2].name;
+            moveTH.text = moveTHT;
+            movefT = "---";
+            moveF.text = movefT;
+        }
+        if (moveCount == 4)
+        {
+            moveOT = ownedPokemon.moves[0].name;
+            moveO.text = moveOT;
+            moveTT = ownedPokemon.moves[1].name;
+            moveT.text = moveTT;
+            moveTHT = ownedPokemon.moves[2].name;
+            moveTH.text = moveTHT;
+            movefT = ownedPokemon.moves[3].name;
+            moveF.text = movefT;
+        }
+    }
+
     public void UpdatePokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP, string PlayerPokemonName, int pLevel, int pHP, int pMaxHP)
     {
         SetHUD(eMaxHP, eHP, PokemonName, elevel, ePokeName, ePokeLevel, ePokeHP, eHpSlider);
@@ -300,9 +354,31 @@ public class BattleManager : MonoBehaviour
     {
         slider.value += hp;
     }
-    public void Attack(BasePokemon Attacker, BasePokemon Defender, int Damage)
+    public void Attack(BasePokemon Attacker, BasePokemon Defender, int Damage, Text PokeHP)
     {
         Defender.currentHP += -(Damage);
+        PokeHP.text = Defender.currentHP + "/" + Defender.HP;
+    }
+
+    IEnumerator PlayerTurn()
+    {
+        state = BattleState.EnemyTurn;
+        ChangeMenu(BattleMenu.Info);
+        InfoText.text = gm.playerTempPoke.Name + " is using an attack!";
+        yield return new WaitForSeconds(2f);
+        Attack(gm.playerTempPoke, gm.tempPoke, 4, ePokeHP);
+        Debug.Log("Player Attack");
+    }
+
+    IEnumerator EnemyTurn()
+    {
+        yield return new WaitForSeconds(4f);
+        InfoText.text = gm.tempPoke.Name + " is using an attack!";
+        yield return new WaitForSeconds(2f);
+        Attack(gm.tempPoke, gm.playerTempPoke, 3, pPokeHP);
+        Debug.Log("Enemy Attack");
+        state = BattleState.PlayerTurn;
+        ChangeMenu(BattleMenu.Selection);
     }
 }
 

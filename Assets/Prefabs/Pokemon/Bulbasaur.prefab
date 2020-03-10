@@ -95,7 +95,8 @@ MonoBehaviour:
   Name: Bulbasaur
   image: {fileID: 21300000, guid: 34f5dd298e9f8b84488b37c727776f31, type: 3}
   biomeFound: 0
-  type: 1
+  type1: 1
+  type2: 4
   rarity: 1
   HP: 45
   currentHP: 0

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject dPoke;
     public GameObject aPoke;
+    public BasePokemon tempPoke;
+    public BasePokemon playerTempPoke;
     public Player plyr;
 
     public List<BasePokemon> allPokemon = new List<BasePokemon>();
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject emptyfriendlyPoke;
 
     public BattleManager bm;
+    private bool firstTime = true;
 
     void Start()
     {
@@ -66,8 +69,8 @@ public class GameManager : MonoBehaviour
         dPoke.transform.parent = defencePodium;
         aPoke.transform.parent = attackPodium;
         //copy BasePokemon so it gets individuell
-        BasePokemon tempPoke = dPoke.AddComponent<BasePokemon>() as BasePokemon;
-        BasePokemon playerTempPoke = aPoke.AddComponent<BasePokemon>() as BasePokemon;
+        tempPoke = dPoke.AddComponent<BasePokemon>() as BasePokemon;
+        playerTempPoke = aPoke.AddComponent<BasePokemon>() as BasePokemon;
         tempPoke.AddMember(battlePokemon);
         playerTempPoke.AddMember(PlayerPokemon.pokemon);
 
@@ -81,13 +84,14 @@ public class GameManager : MonoBehaviour
         playerTempPoke.HP = (((2 * playerTempPoke.HP) * playerTempPoke.level) / 100) + playerTempPoke.level + 10;
         tempPoke.currentHP = tempPoke.HP;
         playerTempPoke.currentHP = playerTempPoke.HP;
-        
+
         //Set Sprites
         dPoke.GetComponent<SpriteRenderer>().sprite = battlePokemon.image;
         aPoke.GetComponent<SpriteRenderer>().sprite = PlayerPokemon.pokemon.image;
         //User Interface Update
         bm.InfoText.text = "A wild " + battlePokemon.Name + " appeared!";
         bm.ChangeMenu(BattleMenu.Info);
+        bm.GetMoves(PlayerPokemon);
         //Update 
         bm.UpdatePokemonDetails(tempPoke.Name, tempPoke.level, tempPoke.currentHP, tempPoke.HP, PlayerPokemon.NickName, playerTempPoke.level, playerTempPoke.currentHP, playerTempPoke.HP);
     }
@@ -134,7 +138,7 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public class PokemonMoves
 {
-    string name;
+    public string name;
     public MoveType category;
     public Stat moveStat;
     public PokemonType moveType;

@@ -95,7 +95,8 @@ MonoBehaviour:
   Name: Pidgey
   image: {fileID: 21300018, guid: 34f5dd298e9f8b84488b37c727776f31, type: 3}
   biomeFound: 0
-  type: 10
+  type1: 0
+  type2: 10
   rarity: 0
   HP: 40
   currentHP: 0

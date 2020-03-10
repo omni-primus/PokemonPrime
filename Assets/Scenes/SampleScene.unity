@@ -1192,7 +1192,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5530,7 +5530,23 @@ MonoBehaviour:
     pokemon: {fileID: 5597377649504432458, guid: 6c921feb4f6c9784fa0baed91a5b169d,
       type: 3}
     level: 5
-    moves: []
+    moves:
+    - name: Scratch
+      category: 0
+      moveStat:
+        currentStat: 0
+      moveType: 0
+      PP: 25
+      power: 40
+      accuracy: 100
+    - name: Growl
+      category: 2
+      moveStat:
+        currentStat: 0
+      moveType: 0
+      PP: 20
+      power: 0
+      accuracy: 100
 --- !u!1 &1051264562
 GameObject:
   m_ObjectHideFlags: 0
@@ -8980,6 +8996,8 @@ MonoBehaviour:
   player: {fileID: 1051064129}
   dPoke: {fileID: 0}
   aPoke: {fileID: 0}
+  tempPoke: {fileID: 0}
+  playerTempPoke: {fileID: 0}
   plyr: {fileID: 1051064135}
   allPokemon:
   - {fileID: 4242481906819964537, guid: 8679d38f6d4c6d8419eb89b762341b1f, type: 3}

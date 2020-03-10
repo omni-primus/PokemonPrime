@@ -10,7 +10,8 @@ public class BasePokemon : MonoBehaviour
     public string Name;
     public Sprite image;
     public BiomeList biomeFound;
-    public PokemonType type;
+    public PokemonType type1;
+    public PokemonType type2;
     public Rarity rarity;
     public int HP;
     public int currentHP;
@@ -42,7 +43,8 @@ public class BasePokemon : MonoBehaviour
         this.Name = bp.Name;
         this.image = bp.image;
         this.biomeFound = bp.biomeFound;
-        this.type = bp.type;
+        this.type1 = bp.type1;
+        this.type2 = bp.type2;
         this.rarity = bp.rarity;
         this.HP = bp.HP;
         this.currentHP = bp.currentHP;
@@ -85,7 +87,8 @@ public enum PokemonType
     ghost,
     fighting,
     dragon,
-    dark
+    dark,
+    none
 }
 
 [System.Serializable]

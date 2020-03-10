@@ -95,7 +95,8 @@ MonoBehaviour:
   Name: Ivysaur
   image: {fileID: 21300002, guid: 34f5dd298e9f8b84488b37c727776f31, type: 3}
   biomeFound: 0
-  type: 1
+  type1: 1
+  type2: 4
   rarity: 4
   HP: 60
   currentHP: 0
