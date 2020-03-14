@@ -45,6 +45,7 @@ public class BattleManager : MonoBehaviour
 
     [Header("Pokemon-Enemy")]
     public GameObject enemyDetails;
+    private OwnedPokemon BattlerPoke;
     public Text ePokeName;
     public Text ePokeLevel;
     public Text ePokeHP;
@@ -136,8 +137,35 @@ public class BattleManager : MonoBehaviour
             {
                 if (currentSelection == 1)
                 {
-                    StartCoroutine(PlayerTurn());
-                    StartCoroutine(EnemyTurn());
+                    if (moveOT != "---")
+                    {
+                        StartCoroutine(PlayerTurn(0, moveOT));
+                        StartCoroutine(EnemyTurn());
+                    }
+                }
+                if (currentSelection == 2)
+                {
+                    if (moveTT != "---")
+                    {
+                        StartCoroutine(PlayerTurn(1, moveTT));
+                        StartCoroutine(EnemyTurn());
+                    }
+                }
+                if (currentSelection == 3)
+                {
+                    if (moveTHT != "---")
+                    {
+                        StartCoroutine(PlayerTurn(2, moveTHT));
+                        StartCoroutine(EnemyTurn());
+                    }
+                }
+                if (currentSelection == 4)
+                {
+                    if (movefT != "---")
+                    {
+                        StartCoroutine(PlayerTurn(3, movefT));
+                        StartCoroutine(EnemyTurn());
+                    }
                 }
             }
 
@@ -333,6 +361,11 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public void GetBattlePokemon(OwnedPokemon ownedPokemon)
+    {
+        BattlerPoke = ownedPokemon;
+    }
+
     public void UpdatePokemonDetails(string PokemonName, int elevel, int eHP, int eMaxHP, string PlayerPokemonName, int pLevel, int pHP, int pMaxHP)
     {
         SetHUD(eMaxHP, eHP, PokemonName, elevel, ePokeName, ePokeLevel, ePokeHP, eHpSlider);
@@ -354,28 +387,37 @@ public class BattleManager : MonoBehaviour
     {
         slider.value += hp;
     }
-    public void Attack(BasePokemon Attacker, BasePokemon Defender, int Damage, Text PokeHP)
+    public void Attack(BasePokemon Attacker, BasePokemon Defender, OwnedPokemon ownedPokemon, int AttNbr, Text PokeHP)
     {
-        Defender.currentHP += -(Damage);
-        PokeHP.text = Defender.currentHP + "/" + Defender.HP;
+        MoveType moveType = ownedPokemon.moves[AttNbr].category;
+        if (moveType == MoveType.Physical)
+        {
+            Debug.Log("Physical");
+        }
+        else if (moveType == MoveType.Status)
+        {
+            Debug.Log("Status");
+        }
+        //Defender.currentHP += -(Damage);
+        //PokeHP.text = Defender.currentHP + "/" + Defender.HP;
     }
 
-    IEnumerator PlayerTurn()
+    IEnumerator PlayerTurn(int x, string AttName)
     {
         state = BattleState.EnemyTurn;
         ChangeMenu(BattleMenu.Info);
-        InfoText.text = gm.playerTempPoke.Name + " is using an attack!";
-        yield return new WaitForSeconds(2f);
-        Attack(gm.playerTempPoke, gm.tempPoke, 4, ePokeHP);
+        InfoText.text = gm.playerTempPoke.Name + " is using " + AttName + "!";
+        yield return new WaitForSeconds(1f);
+        Attack(gm.playerTempPoke, gm.tempPoke, BattlerPoke, x, ePokeHP);
         Debug.Log("Player Attack");
     }
 
     IEnumerator EnemyTurn()
     {
-        yield return new WaitForSeconds(4f);
-        InfoText.text = gm.tempPoke.Name + " is using an attack!";
         yield return new WaitForSeconds(2f);
-        Attack(gm.tempPoke, gm.playerTempPoke, 3, pPokeHP);
+        InfoText.text = gm.tempPoke.Name + " is using an attack!";
+        yield return new WaitForSeconds(1f);
+        //Attack(gm.tempPoke, gm.playerTempPoke, BattlerPoke, 3, pPokeHP);
         Debug.Log("Enemy Attack");
         state = BattleState.PlayerTurn;
         ChangeMenu(BattleMenu.Selection);

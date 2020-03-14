@@ -9006,7 +9006,23 @@ MonoBehaviour:
   - {fileID: 1994671693145722144, guid: 464011d42f859984ea9087c538659267, type: 3}
   - {fileID: 2741967515878635612, guid: f1cce31bce82cd74982b16fc46917018, type: 3}
   Route1: []
-  allMoves: []
+  allMoves:
+  - name: Scratch
+    category: 0
+    moveStat:
+      currentStat: 0
+    moveType: 0
+    PP: 35
+    power: 40
+    accuracy: 100
+  - name: Growl
+    category: 2
+    moveStat:
+      currentStat: 0
+    moveType: 0
+    PP: 40
+    power: 0
+    accuracy: 100
   defencePodium: {fileID: 133951357}
   attackPodium: {fileID: 1051264563}
   emptyPoke: {fileID: 6699434418648205404, guid: f193bf8da284d524f80594f2ef76c569,

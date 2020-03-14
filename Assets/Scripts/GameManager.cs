@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     public GameObject emptyfriendlyPoke;
 
     public BattleManager bm;
-    private bool firstTime = true;
 
     void Start()
     {
@@ -92,6 +91,7 @@ public class GameManager : MonoBehaviour
         bm.InfoText.text = "A wild " + battlePokemon.Name + " appeared!";
         bm.ChangeMenu(BattleMenu.Info);
         bm.GetMoves(PlayerPokemon);
+        bm.GetBattlePokemon(PlayerPokemon);
         //Update 
         bm.UpdatePokemonDetails(tempPoke.Name, tempPoke.level, tempPoke.currentHP, tempPoke.HP, PlayerPokemon.NickName, playerTempPoke.level, playerTempPoke.currentHP, playerTempPoke.HP);
     }

@@ -33,7 +33,7 @@ public class TallGrass : MonoBehaviour
             float rare = 0.008f; //0.8 - 0.31 = 0.49
             float veryrare = 0.003f;  //0.3
 
-            float p = Random.Range(0.0f, 100.0f);
+            float p = Random.Range(0.0f, 90.0f);
 
             if(p < veryrare*100)
             {
