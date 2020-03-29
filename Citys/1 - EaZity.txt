@@ -1,0 +1,10 @@
+von Wald umgeben
+Bach Statue
+Häuser:
+	Spielerhaus
+	Team Haus
+	Wohnhaus vom Leader
+	2 Random Häuser
+Fluss
+Ausgang nach rechts raus
+

@@ -2,3 +2,6 @@
 - Igel mit Moos auf dem Rücken -> eingefroren
 
 - Cryo -> Debuffs haben nur Häflte der Wirkung
+
+Attacken
+- Nadelrakete

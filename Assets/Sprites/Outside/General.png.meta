@@ -393,8 +393,8 @@ TextureImporter:
     21300776: General_388
     21300778: General_389
     21300780: General_390
-    21300782: General_391
-    21300784: General_392
+    21300782: Baum1 links oben
+    21300784: Baum1 rechts oben
     21300786: General_393
     21300788: General_394
     21300790: General_395
@@ -436,8 +436,8 @@ TextureImporter:
     21300862: General_431
     21300864: General_432
     21300866: General_433
-    21300868: General_434
-    21300870: General_435
+    21300868: Baum1 links mitte
+    21300870: Baum1 rechts mitte
     21300872: General_436
     21300874: General_437
     21300876: General_438
@@ -478,8 +478,8 @@ TextureImporter:
     21300946: General_473
     21300948: General_474
     21300950: General_475
-    21300952: General_476
-    21300954: General_477
+    21300952: Baum1 links unten
+    21300954: Baum1 rechts unten
     21300956: General_478
     21300958: General_479
     21300960: General_480
@@ -1724,6 +1724,8 @@ TextureImporter:
     21303438: General_1723
     21303440: General_1724
     21303442: General_1725
+    21303444: Baum1 links oben t
+    21303446: Baum1 rechts oben t
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -2961,7 +2963,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 816
+        y: 809
         width: 16
         height: 16
       alignment: 0
@@ -9637,7 +9639,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: General_391
+      name: Baum1 links oben
       rect:
         serializedVersion: 2
         x: 16
@@ -9657,7 +9659,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: General_392
+      name: Baum1 rechts oben
       rect:
         serializedVersion: 2
         x: 32
@@ -10497,7 +10499,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: General_434
+      name: Baum1 links mitte
       rect:
         serializedVersion: 2
         x: 16
@@ -10517,7 +10519,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: General_435
+      name: Baum1 rechts mitte
       rect:
         serializedVersion: 2
         x: 32
@@ -11337,7 +11339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: General_476
+      name: Baum1 links unten
       rect:
         serializedVersion: 2
         x: 16
@@ -11357,7 +11359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: General_477
+      name: Baum1 rechts unten
       rect:
         serializedVersion: 2
         x: 32
@@ -36252,6 +36254,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bc80aefd93462f44aa1b02f0b8d16e17
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baum1 links oben t
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 704
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df78a62610fa25408ebb0c3951b222e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baum1 rechts oben t
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 704
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732e28788fc8ecd439cd6f99a6faa88d
       vertices: []
       indices: 
       edges: []

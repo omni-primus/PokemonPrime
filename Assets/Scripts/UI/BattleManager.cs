@@ -392,7 +392,7 @@ public class BattleManager : MonoBehaviour
         MoveType moveType = ownedPokemon.moves[AttNbr].category;
         if (moveType == MoveType.Physical)
         {
-            Debug.Log("Physical");
+            Defender.currentHP -= 4;
         }
         else if (moveType == MoveType.Status)
         {

@@ -1,0 +1,10 @@
+Arena - Imperator von Team
+	Poke:
+		010
+		015
+		022
+Stadt steht unter Einfluss des Teams
+Völkerschlacht Denkmal
+Uniriese -> Team Hauptquartier
+Messe maybe
+umgeben mit Feld, Zäune als Grenze benutzten
